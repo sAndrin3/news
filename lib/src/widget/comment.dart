@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/item_model.dart';
 import 'loading_container.dart';
 
-abstract class Comment extends StatelessWidget {
+class Comment extends StatelessWidget {
   late final int itemId;
   late final Map<int, Future<ItemModel>> itemMap;
   final int depth;
@@ -24,7 +24,7 @@ abstract class Comment extends StatelessWidget {
 
         final children = <Widget>[
           ListTile(
-            title: buildText(item),
+            title: buildText(item!),
             subtitle:item.by == "" ? Text("Deleted") : Text(item.by),
             contentPadding: EdgeInsets.only(
               right: 16.0,

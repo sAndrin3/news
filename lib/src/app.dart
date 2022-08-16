@@ -5,8 +5,12 @@ import 'screens/news_detail.dart';
 import 'blocs/comments_provider.dart';
 
 class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
   Widget build(context) {
-    return CommentsProvider(
+    return CommentProvider(
+      key: ValueKey("item"),
       child: StoriesProvider(
         key: ValueKey("item"),
         child:  MaterilaApp(
@@ -30,7 +34,7 @@ class App extends StatelessWidget {
     } else {
       return MaterialPageRoute(
         builder: (context) {
-          final commentsBloc = CommentsProvider.of(context);
+          final commentsBloc = CommentProvider.of(context);
           final itemId = int.parse(settings.name!.replaceFirst('/', ''));
 
           commentsBloc.fetchItemWithComments(itemId);
@@ -45,5 +49,5 @@ class App extends StatelessWidget {
     
   }
   
-  MaterilaApp({required String title, required NewsList home, required Route Function(RouteSettings settings) onGenerateRoute}) {}
+  MaterilaApp({required String title, NewsList? home, required Route Function(RouteSettings settings) onGenerateRoute}) {}
 }
