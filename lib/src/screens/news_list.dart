@@ -4,6 +4,9 @@ import '../widget/news_list_tile.dart';
 import '../widget/refresh.dart';
 
 class NewsList extends StatelessWidget{
+  const NewsList({super.key});
+
+  @override
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 
@@ -11,7 +14,7 @@ class NewsList extends StatelessWidget{
 
     return Scaffold(
       appBar:AppBar(
-        title: Text('Top News'),
+        title: const Text('Top News'),
       ),
       body: buildList(bloc),
     );  
@@ -22,7 +25,7 @@ class NewsList extends StatelessWidget{
       stream: bloc.topIds,
       builder: (context, AsyncSnapshot<List<int>>snapshot) {
         if (!snapshot.hasData) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }

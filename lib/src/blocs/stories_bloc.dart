@@ -48,7 +48,7 @@ class StoriesBloc {
     _itemsOutput.close();
   }
   
-  static Repository() {}
+  //static Repository() {}
 }
 
 class Observable {

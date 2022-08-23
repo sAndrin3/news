@@ -10,10 +10,10 @@ class App extends StatelessWidget {
   @override
   Widget build(context) {
     return CommentProvider(
-      key: ValueKey("item"),
+      key: const ValueKey("item"),
       child: StoriesProvider(
-        key: ValueKey("item"),
-        child:  MaterilaApp(
+        key: const ValueKey("item"),
+        child:  MaterialApp(
           title: 'News!',
           onGenerateRoute: routes,
         ),
@@ -28,7 +28,7 @@ class App extends StatelessWidget {
           final storiesBloc = StoriesProvider.of(context);
 
           storiesBloc.fetchTopIds();
-          return NewsList();
+          return const NewsList();
         },
       );
     } else {
@@ -49,5 +49,5 @@ class App extends StatelessWidget {
     
   }
   
-  MaterilaApp({required String title, NewsList? home, required Route Function(RouteSettings settings) onGenerateRoute}) {}
+  //MaterilaApp({required String title, NewsList? home, required Route Function(RouteSettings settings) onGenerateRoute}) {}
 }

@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:http/http.dart';
 import 'package:news/src/models/item_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -8,9 +11,11 @@ import 'repository.dart';
 import '../models/item_model.dart';
 import 'repository.dart';
 
+const _root = 'https://hacker-news.firebaseio.com/v0';
 
 class NewsDbProvider implements Source, Cache {
   Database ?db;
+  Client client = Client();
 
   NewsDbProvider() {
     init();
@@ -79,8 +84,12 @@ class NewsDbProvider implements Source, Cache {
   }
   
   @override
-  // TODO: implement fetchTopIds
-  Future<List<int>> get fetchTopIds async => throw UnimplementedError();
+  Future<List<int>> get fetchTopIds async {
+   final response = await client.get(Uri.parse('$_root/topstories.json'));
+   final ids = json.decode(response.body);
+
+   return ids.cast<int>();
+  }
   
   @override
   Future<int> addItem(ItemModel item) {

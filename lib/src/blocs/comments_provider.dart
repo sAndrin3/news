@@ -12,9 +12,7 @@ CommentProvider({required Key key, Widget? child})
 bool updateShouldNotify(_) => true;
 
 static CommentsBloc of(BuildContext context) {
-  return (context.dependOnInheritedWidgetOfExactType(aspect: CommentsProvider)
-          as CommentProvider)
-      .bloc;
+  return (context.dependOnInheritedWidgetOfExactType<CommentProvider>())!.bloc;
 }
 }
 
