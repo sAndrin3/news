@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoadingContainer extends StatelessWidget {
+  @override
   Widget build(context) {
     return Column(
       children: [

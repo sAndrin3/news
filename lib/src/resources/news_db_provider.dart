@@ -87,8 +87,9 @@ class NewsDbProvider implements Source, Cache {
   Future<List<int>> get fetchTopIds async {
    final response = await client.get(Uri.parse('$_root/topstories.json'));
    final ids = json.decode(response.body);
-
-   return ids.cast<int>();
+   List<int> ds = ids.cast<int>();
+   ///ds.take(2).toList()
+   return ds;
   }
   
   @override

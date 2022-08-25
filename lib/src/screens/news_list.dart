@@ -10,8 +10,6 @@ class NewsList extends StatelessWidget{
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
 
-   
-
     return Scaffold(
       appBar:AppBar(
         title: const Text('Top News'),

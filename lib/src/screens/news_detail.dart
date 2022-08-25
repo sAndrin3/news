@@ -11,12 +11,13 @@ class NewsDetail extends StatelessWidget {
   
   Iterable<Widget>? get commentslist => null;
   
+  @override
   Widget build(context) {
-    final bloc = CommentsProvider.of(context);
+    final bloc = CommentProvider.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail'),
+        title: const Text('Detail'),
       ),
       body: buildbody(bloc),
     );
@@ -46,16 +47,12 @@ class NewsDetail extends StatelessWidget {
   }
 
   Widget buildList(ItemModel item, Map<int, Future<ItemModel>> itemMap) {
-    final children = <Widget> [];
+    final children = <Widget>[];
     children.add(buildTitle(item));
-    final commentsList = item.kids.map((kidId){
-      return Comment(
-        itemId: kidId,
-        itemMap: itemMap,
-        depth: 0 
-      );
+    final commentsList = item.kids.map((kidId) {
+      return Comment(itemId: kidId, itemMap: itemMap, depth: 0);
     }).toList();
-    children.addAll(commentslist!);
+    children.addAll(commentsList);
 
 
     return ListView(
@@ -70,7 +67,7 @@ class NewsDetail extends StatelessWidget {
       child: Text(
         item.title,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.bold,
         ),
@@ -79,6 +76,6 @@ class NewsDetail extends StatelessWidget {
   }
 }
 
-class CommentsProvider {
-  static of(BuildContext context) {}
-}
+// class CommentsProvider {
+//   static of(BuildContext context) {}
+// }

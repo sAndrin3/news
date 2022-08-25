@@ -1,15 +1,20 @@
 import'dart:async';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:news/src/widget/loading_container.dart';
 import '../models/item_model.dart';
 import '../blocs/stories_provider.dart';
 import 'loading_container.dart';
 
+const _root = 'https://hacker-news.firebaseio.com/v0';
+
 class NewsListTile extends StatelessWidget {
   final int itemId;
+  Client client = Client();
 
   NewsListTile({required this.itemId});
 
+  @override
   Widget build(context) {
     final bloc = StoriesProvider.of(context);
     

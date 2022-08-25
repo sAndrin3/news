@@ -22,7 +22,18 @@ class NewsApiProvider implements Source {
     return ItemModel.fromJson(parsedJson);
 
   }
+
+  fetchNewsList() {}
+
+  fetchSearchNews() {}
+
+  getFavoriteNews() {}
+
+  addToFirestore(val) {}
+
+  deliteFromFirestore(val) {}
 }
 
 class Source {
 }
+final newsApiProvider = NewsApiProvider();

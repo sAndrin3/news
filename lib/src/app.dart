@@ -10,7 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(context) {
     return CommentProvider(
-      key: const ValueKey("item"),
+      key: const ValueKey("itemParent"),
       child: StoriesProvider(
         key: const ValueKey("item"),
         child:  MaterialApp(

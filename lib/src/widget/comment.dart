@@ -12,6 +12,7 @@ class Comment extends StatelessWidget {
 
   Comment({required this.itemId, required this.itemMap, required this.depth});
 
+  @override
   Widget build(context) {
     return FutureBuilder(
       future: itemMap[itemId],
@@ -33,13 +34,13 @@ class Comment extends StatelessWidget {
           ),
           Divider(),
         ];
-        item.kids.forEach((kidsId) {
+        for (var kidsId in item.kids) {
           children.add(Comment(
-            itemId: kidId,
+            itemId: kidsId,
             itemMap: itemMap,
             depth: depth + 1,
           ),);
-        });
+        }
 
         return Column (
           children: children,

@@ -9,12 +9,13 @@ CommentProvider({required Key key, Widget? child})
   : bloc = CommentsBloc(),
   super(key: key, child: child!);
 
-bool updateShouldNotify(_) => true;
+@override
+bool updateShouldNotify(oldWidget) => true;
 
 static CommentsBloc of(BuildContext context) {
   return (context.dependOnInheritedWidgetOfExactType<CommentProvider>())!.bloc;
 }
 }
 
-class CommentsProvider {
-}
+// class CommentsProvider {
+// }

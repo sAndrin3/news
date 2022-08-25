@@ -20,32 +20,32 @@ final int id;
   ItemModel.fromJson(Map<String, dynamic> parsedJson)
     : id = parsedJson['id'],
       deleted = parsedJson['deleted'] ?? false,
-      type = parsedJson['type'],
+      type = parsedJson['type'] ?? "",
       by = parsedJson['by'] ?? '',
-      time = parsedJson['time'],
+      time = parsedJson['time'] ?? 0,
       text= parsedJson['text'] ?? '',
       dead = parsedJson['dead'] ?? false,
-      parent = parsedJson['parent'],
+      parent = parsedJson['parent']?? 0,
       kids = parsedJson['kids'] ?? [],
-      url = parsedJson['url'],
-      score = parsedJson['score'],
-      title = parsedJson['title'],
+      url = parsedJson['url'] ??"",
+      score = parsedJson['score'] ?? 0,
+      title = parsedJson['title'] ?? "",
       descendants = parsedJson['descendants'] ?? 0;
 
        ItemModel.fromDb(Map<String, dynamic> parsedJson)
     : id = parsedJson['id'],
       deleted = parsedJson['deleted'] == 1,
-      type = parsedJson['type'],
-      by = parsedJson['by'],
-      time = parsedJson['time'],
-      text= parsedJson['text'],
+      type = parsedJson['type'] ?? '',
+      by = parsedJson['by']?? '',
+      time = parsedJson['time']??0,
+      text= parsedJson['text']?? '',
       dead = parsedJson['dead'] ==1 ,
-      parent = parsedJson['parent'],
-      kids = jsonDecode(parsedJson['kids']),
-      url = parsedJson['url'],
-      score = parsedJson['score'],
-      title = parsedJson['title'],
-      descendants = parsedJson['descendants'];
+      parent = parsedJson['parent']??0,
+      kids = jsonDecode(parsedJson['kids'])??[],
+      url = parsedJson['url']?? '',
+      score = parsedJson['score']??0,
+      title = parsedJson['title']?? '',
+      descendants = parsedJson['descendants']??0;
 
   Map<String, dynamic> toMapForDb() {
     return <String, dynamic>{
